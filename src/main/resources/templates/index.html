@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Consultancy</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+	min-height: 100vh;
+	background-color: #f3f2ec;
+	background-image: linear-gradient(147deg, #f3f2ec 0%, #b3b1aa 100%);
+}
+
+#btn-edit {
+	font-size: 14px;
+}
+
+.btn-group-xs>.btn, .btn-xs {
+	padding: .25rem .4rem;
+	font-size: .875rem;
+	line-height: .5;
+	border-radius: .2rem;
+}
+</style>
+</head>
+<body>
+	<div class="container py-2">
+		<div class="row py-3">
+			<div class="col-lg-10 mx-auto">
+				<div class="card rounded shadow border-0">
+					<div class="card-body p-5 bg-white rounded">
+						<div class="table-responsive">
+							<table id="example" style="width: 100%"
+								class="table table-striped table-bordered">
+								<div>
+									<a style="float: left;" th:href="@{/ShowNewConsultantForm}"
+										class="btn btn-primary btn-sm mb-3" id="btn-edit"> Add
+										Consultant </a>
+									<h2 style="text-align: center;">Consultants List</h2>
+								</div>
+
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Position</th>
+										<th>Office</th>
+										<th>Phone</th>
+										<th>Email</th>
+										<th>Salary</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="consultant: ${consultantList}">
+										<td th:text="${consultant.fname}" style="font-size: 14px"></td>
+										<td th:text="${consultant.position}" style="font-size: 14px"></td>
+										<td th:text="${consultant.office}" style="font-size: 14px"></td>
+										<td th:text="${consultant.phone}" style="font-size: 14px"></td>
+										<td th:text="${consultant.email}"
+											style="text-align: center; font-size: 14px"></td>
+										<td  th:text="${consultant.salary}" style="font-size: 14px"></td>
+										<td style='white-space: nowrap; font-size: 14px'><span><a
+										th:href="@{/showFormforUpdate/{id}(id=${consultant.id})}"
+												class="btn btn-primary btn-xs"><i
+													class="fa fa-edit fa-xs icon-edit"></i></a></span> <a
+											th:href="@{/deleteConsultant/{id}(id=${consultant.id})}"
+											class="btn btn-danger btn-xs"><i
+												class="fa fa-trash-o fa-xs" aria-hidden="true"></i></a></td>
+									</tr>
+
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- jQuery library -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<!-- Popper JS -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
